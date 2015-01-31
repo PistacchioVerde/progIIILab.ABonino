@@ -47,7 +47,7 @@ public class ProvaMessageBoxNoSync {
 		
 		System.out.println(box + "\n");
 		
-		System.out.println(box.isBoxEmpty());
+		System.out.println(box.isThereAMessage());
 		System.out.println(box.isThereAMessage(pag2));
 		
 	}

@@ -9,7 +9,7 @@ import parte1.*;
 public class MessageBoxNoSync extends UnicastRemoteObject{
 	
 	protected PersonalAgentID owner;
-	protected ArrayList<Message> box; //funziona senza problemi anche con Vector<E>
+	protected List<Message> box; //funziona senza problemi anche con Vector<E>
 	
 	public MessageBoxNoSync() throws Exception{
 		this.owner = null;
@@ -38,17 +38,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject{
 		this.box = box;
 	}
 	
-	public boolean isBoxEmpty(){
-		return box.isEmpty();
-	}
-	
 	public Message readMessage() throws Exception{
-		if (this.isBoxEmpty()){ throw new JAMMessageBoxException();}
+		if (this.box.isEmpty()){ throw new JAMMessageBoxException();}
 		return  (Message) box.remove(0);
 	}
 	
 	public Message readMessage(AgentID agent) throws Exception{
-		if (this.isBoxEmpty()) return null;
+		if (this.box.isEmpty()) return null;
 		for (Message msg : box){
 			if(msg.getSender().equals(agent)){
 				return box.remove(box.indexOf(msg));
@@ -58,7 +54,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject{
 	}
 	
 	public Message readMessage(Performative perf) throws Exception{
-		if (this.isBoxEmpty()) return null;
+		if (this.box.isEmpty()) return null;
 		for (Message msg : box){
 			if(msg.getPerformative().equals(perf)){
 				return box.remove(box.indexOf(msg));
@@ -68,7 +64,7 @@ public class MessageBoxNoSync extends UnicastRemoteObject{
 	}
 
 	public Message readMessage(AgentID agent, Performative perf) throws Exception{
-		if (this.isBoxEmpty()) return null;
+		if (this.box.isEmpty()) return null;
 		for (Message msg : box){
 			if(msg.getSender().equals(agent) && msg.getPerformative().equals(perf)){
 				return box.remove(box.indexOf(msg));
@@ -78,11 +74,13 @@ public class MessageBoxNoSync extends UnicastRemoteObject{
 	}
 	
 	public boolean isThereAMessage(){
-		return !this.isBoxEmpty();
+		System.out.println("Ho usato IsThere di MSBoxNOSync");
+		return !this.box.isEmpty();
 	}
 	
 	public boolean isThereAMessage(AgentID agent){
-		if (this.isBoxEmpty()) return false;
+		System.out.println("Ho usato IsThere di MSBoxNOSync");
+		if (this.box.isEmpty()) return false;
 		for(Message msg : box){
 			if(msg.getSender().equals(agent)) return true;
 		}
@@ -90,7 +88,8 @@ public class MessageBoxNoSync extends UnicastRemoteObject{
 	}
 	
 	public boolean isThereAMessage(Performative perf) throws Exception{
-		if (this.isBoxEmpty()) return false;
+		System.out.println("Ho usato IsThere di MSBoxNOSync");
+		if (this.box.isEmpty()) return false;
 		for(Message msg : box){
 			if(msg.getPerformative().equals(perf)) return true;
 		}
@@ -98,7 +97,8 @@ public class MessageBoxNoSync extends UnicastRemoteObject{
 	}
 	
 	public boolean isThereAMessage(AgentID agent, Performative perf) throws Exception{
-		if (this.isBoxEmpty()) return false;
+		System.out.println("Ho usato IsThere di MSBoxNOSync");
+		if (this.box.isEmpty()) return false;
 		for(Message msg : box){
 			if(msg.getSender().equals(agent) && msg.getPerformative().equals(perf)) return true;
 		}

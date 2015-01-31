@@ -75,15 +75,18 @@ public class MessageBox extends MessageBoxNoSync implements RemoteMessageBox{
 	}
 	
 	public synchronized boolean isThereAMessage(AgentID agent){
+		System.out.println("Ho usao IsThere di MBoxSync");
 		return super.isThereAMessage(agent);
 	}
 	
 	public synchronized boolean isThereAMessage(Performative perf) throws Exception{
+		System.out.println("Ho usao IsThere di MBoxSync");
 		return super.isThereAMessage(perf);
 	}
 	
 	public synchronized boolean isThereAMessage(AgentID agent, Performative perf) throws Exception{
-		return super.isThereAMessage(perf);
+		System.out.println("Ho usao IsThere di MBoxSync");
+		return super.isThereAMessage(agent, perf);
 	}
 	
 }
