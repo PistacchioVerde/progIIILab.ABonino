@@ -1,9 +1,9 @@
 package parte4;
 
-import java.rmi.Naming;
+import java.rmi.*;
 
 import parte1.*;
-import parte3.MessageBox;
+import parte3.*;
 
 public class ProvaRemoteMessageBoxUno {
 

@@ -24,8 +24,8 @@ public class ProvaRemoteMessageBoxDue {
                 rmb.write(msg);
                 System.out.println(rmb.readMessage());
             }
-            System.out.println("Rimuovo il box di " + agent);
-            adsl.removeRemoteMessageBox(agent);
+            //System.out.println("Rimuovo il box di " + agent);
+            //adsl.removeRemoteMessageBox(agent);
             System.out.println("Cerco il box di " + agent);
             ArrayList<RemoteMessageBox> box = (ArrayList<RemoteMessageBox>) adsl.getRemoteMessageBox(agent);
             for(RemoteMessageBox msgBox : box)
